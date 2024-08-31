@@ -1,8 +1,6 @@
 FROM ${BASE_IMAGE:-openkbs/jdk-mvn-py3}
 #FROM ${BASE_IMAGE:-openkbs/jdk-mvn-py3:v1.2.6}
 
-MAINTAINER DrSnowbird "DrSnowbird@openkbs.org"
-
 #### ---------------------
 #### ---- USER, GROUP ----
 #### ---------------------
@@ -71,7 +69,8 @@ RUN ${SCRIPT_DIR}/setup_system_certificates.sh
 #### -----------------------------------------------------------------
 #ENV VNC_RESOLUTION=${VNC_RESOLUTION:-1280x1024}
 #ENV VNC_RESOLUTION=${VNC_RESOLUTION:-1600x800}
-ENV VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
+#ENV VNC_RESOLUTION=${VNC_RESOLUTION:-1920x1080}
+ENV VNC_RESOLUTION=${VNC_RESOLUTION:-1180X600}
 
 #### ----------------------
 #### ---- VNC Password ----
@@ -176,7 +175,7 @@ RUN sudo mkdir -p ${DBUS_SYSTEM_BUS_SOCKET} && sudo chmod go+rw ${DBUS_SYSTEM_BU
 ########################################
 #### ------- OpenJDK Installation ------
 ########################################
-ENV JAVA_VERSION=11 
+ENV JAVA_VERSION=17
 #ENV JAVA_VERSION=${JAVA_VERSION:-11}
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* && \
@@ -223,7 +222,13 @@ RUN set -ex; \
 	update-alternatives --get-selections | awk -v home="$(readlink -f "$JAVA_HOME")" 'index($3, home) == 1 { $2 = "manual"; print | "update-alternatives --set-selections" }'; \
 # ... and verify that it actually worked for one of the alternatives we care about
 	update-alternatives --query java | grep -q 'Status: manual'
-	
+
+#### ---- NetBeans ---- ####
+############################
+RUN wget -c https://dlcdn.apache.org/netbeans/netbeans-installers/22/apache-netbeans_22-1_all.deb
+RUN sudo dpkg -i apache-netbeans_22-1_all.deb
+
+
 ###############################
 #### ---- VNC Startup ---- ####
 ###############################
