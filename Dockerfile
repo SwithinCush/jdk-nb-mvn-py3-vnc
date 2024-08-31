@@ -130,7 +130,7 @@ RUN apt-get install -y xdg-utils --fix-missing
 #######################################
 #### ---- Google-Chrome       ---- ####
 #######################################
-RUN ${INST_SCRIPTS}/google-chrome.sh
+#RUN ${INST_SCRIPTS}/google-chrome.sh
 
 #ARG CHROME_DEB_URL=https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #ARG CHROME_DEB=google-chrome-stable_current_amd64.deb
