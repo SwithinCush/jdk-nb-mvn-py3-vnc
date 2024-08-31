@@ -5,7 +5,7 @@
 
 # (New) Added 'Iridium Browser' for better privacy protection.
 
-# OpenJDK Java 8 + Maven 3.6 + Python 3.6/2.7 + pip 20 + node 14 + npm 6.14 + Gradle 6 + noVNC/VNC (as Cluster Container Desktop)
+# OpenJDK Java 17 + NetBeans 22 + Maven 3.6 + Python 3.6/2.7 + pip 20 + node 14 + npm 6.14 + Gradle 6 + noVNC/VNC (as Cluster Container Desktop)
 [![](https://images.microbadger.com/badges/image/openkbs/jdk-mvn-py3-vnc.svg)](https://microbadger.com/images/openkbs/jdk-mvn-py3-vnc "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/openkbs/jdk-mvn-py3-vnc.svg)](https://microbadger.com/images/openkbs/jdk-mvn-py3-vnc "Get your own version badge on microbadger.com")
 
 # Components
@@ -19,6 +19,9 @@
 
 # Credits:
 This project mainly adopt the [ConSol docker-headless-vnc-container](https://github.com/ConSol/docker-headless-vnc-container) implementation.
+
+# Clone this projects
+`git clone https://github.com/SwithinCush/jdk-nb-mvn-py3-vnc.git`
 
 # Run (recommended for easy-start)
 It's highly recommended to change vnc password to prevent others using the default password to get into your container, modify the file "**./.env**" as below and save the file before you hit, "**./run.sh**":
